@@ -5,6 +5,9 @@ use App\Http\Controllers\HscBoardController;
 use App\Http\Controllers\HscYearController;
 use App\Http\Controllers\HscGroupController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\UnitController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,7 @@ Route::get('/admin', function () {
 Route::get('/', function () {
     return view('frontend.pages.index');
 });
-Route::get('/application',[ApplicantController::class,'index'])->name('application');
+Route::get('/application',[ApplicantController::class,'create'])->name('application');
 //board routes
 Route::prefix('setup')->group(function(){
     Route::get('/view-board',[HscBoardController::class,'index'])->name('board.index');
@@ -49,5 +52,21 @@ Route::prefix('setup')->group(function(){
     Route::post('/update-group/{id}',[HscGroupController::class,'update'])->name('group.update');
     Route::post('/store-group',[HscGroupController::class,'store'])->name('group.store');
     Route::get('/delete-group/{id}',[HscGroupController::class,'destroy'])->name('group.delete');
+});
+
+//units routes
+Route::prefix('setup')->group(function(){
+    Route::get('/view-unit',[UnitController::class,'index'])->name('unit.index');
+    Route::get('/add-unit',[UnitController::class,'create'])->name('unit.add');
+    Route::get('/edit-unit/{id}',[UnitController::class,'edit'])->name('unit.edit');
+    Route::post('/update-unit/{id}',[UnitController::class,'update'])->name('unit.update');
+    Route::post('/store-unit',[UnitController::class,'store'])->name('unit.store');
+    Route::get('/delete-unit/{id}',[UnitController::class,'destroy'])->name('unit.delete');
+});
+
+//units routes
+Route::prefix('application')->group(function(){
+    Route::get('/view',[ApplicantController::class,'index'])->name('application.index');
+    Route::post('/store',[ApplicantController::class,'store'])->name('application.store');
 });
 

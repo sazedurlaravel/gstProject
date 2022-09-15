@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\HscBoard;
 use App\Models\HscYear;
 use App\Models\HscGroup;
+use App\Models\Unit;
+use App\Models\User;
 class ApplicantController extends Controller
 {
     /**
@@ -15,10 +17,8 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        $data['Boards']=HscBoard::all();
-        $data['years']=HscYear::all();
-        $data['groups']=HscGroup::all();
-        return view('frontend.pages.application',$data);
+        $data['allData']=User::all();
+        return view('Backend.pages.applicants.view',$data);
     }
 
     /**
@@ -28,7 +28,11 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        //
+        $data['Boards']=HscBoard::all();
+        $data['years']=HscYear::all();
+        $data['groups']=HscGroup::all();
+        $data['units']=Unit::all();
+        return view('frontend.pages.application',$data);
     }
 
     /**
@@ -39,7 +43,64 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // $request->validate([
+        //     'name' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'fname'=>'required',
+            'mname'=>'required',
+            'unit'=>'required',
+            'ssc_roll'=>'required',
+            'ssc_reg'=>'required',
+            'ssc_board'=>'required',
+            'ssc_year'=>'required',
+            'ssc_gpa'=>'required',
+            'ssc_group'=>'required',
+            'hsc_roll'=>'required',
+            'hsc_reg'=> 'required',
+            'hsc_board'=> 'required',
+            'hsc_year'=>'required',
+            'hsc_gpa'=> 'required',
+            'hsc_group'=>'required',
+            'img'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+        $applicant = new User();
+        $applicant->name=$request->name;
+        $applicant->email=$request->email;
+        $applicant->phone=$request->phone;
+        $applicant->fname=$request->fname;
+        $applicant->mname=$request->mname;
+        $applicant->unit=$request->unit;
+        $applicant->ssc_roll=$request->ssc_roll;
+        $applicant->ssc_reg=$request->ssc_reg;
+        $applicant->ssc_board=$request->ssc_board;
+        $applicant->ssc_year=$request->ssc_year;
+        $applicant->ssc_gpa=$request->ssc_gpa;
+        $applicant->ssc_group=$request->ssc_group;
+        $applicant->hsc_roll=$request->hsc_roll;
+        $applicant->hsc_reg=$request->hsc_reg;
+        $applicant->hsc_board=$request->hsc_board;
+        $applicant->hsc_year=$request->hsc_year;
+        $applicant->hsc_gpa=$request->hsc_gpa;
+        $applicant->hsc_group=$request->hsc_group;
+        $applicant->role="Applicant";
+        $applicant->password="123456";
+        if($request->file('img')){
+            $file= $request->file('img');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Images'), $filename);
+            $applicant['img']= $filename;
+        }
+        $applicant->save();
+
+        return back()->with('success',"Application Submited Successfully!");
+
     }
 
     /**

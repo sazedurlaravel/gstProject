@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class SscGroupController extends Controller
+use App\Models\Unit;
+class UnitController extends Controller
 {
-    /**
+/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $data['allData']=Unit::all();
+        return view('Backend.pages.units.view',$data);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +26,8 @@ class SscGroupController extends Controller
      */
     public function create()
     {
-        //
+        $data['editData'] = "";
+        return view('Backend.pages.units.add',$data);
     }
 
     /**
@@ -34,7 +38,16 @@ class SscGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $this->validate($request,[
+            'unit_name' => 'required|unique:units,unit_name'
+
+        ]);
+
+    	 $Unit=new Unit();
+    	 $Unit->unit_name=$request->unit_name;
+    	 $Unit->save();
+         return redirect()->route('unit.index')->with('success','unit Added!');
     }
 
     /**
@@ -56,7 +69,9 @@ class SscGroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['editData'] = Unit::find($id);
+        return view('Backend.pages.units.add',$data);
+
     }
 
     /**
@@ -68,7 +83,12 @@ class SscGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+    	 $Unit=Unit::find($id);
+    	 $Unit->unit_name=$request->unit_name;
+    	 $Unit->save();
+         return redirect()->route('unit.index')->with('success','unit Updated!');
     }
 
     /**
@@ -79,6 +99,8 @@ class SscGroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $board=Unit::find($id);
+        $board->delete();
+        return back()->with('success',"unit Deleted");
     }
 }

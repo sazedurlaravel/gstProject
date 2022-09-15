@@ -5,7 +5,7 @@
 <br>
 <br>
  <!-- ======= Appointment Section ======= -->
- <section id="appointment" class="appointment section-bg">
+ <section id="kappointment" class="appointment section-bg">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
@@ -13,28 +13,39 @@
 
       </div>
 
-      <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+          </div>
+     @endif
+          @include('Backend.layout.partials.message')
+      <form action={{route('application.store')}} method="post"  class="php-email-form" enctype="multipart/form-data">
+        @csrf
         <div class="row">
           <div class="col-md-4 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" class="form-control"  placeholder="Your Name" >
           </div>
           <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            <input type="email" class="form-control" name="email"  placeholder="Your Email" >
           </div>
           <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+            <input type="tel" class="form-control" name="phone"  placeholder="Your Phone" >
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 form-group mt-3">
-            <input type="text" name="fname" class="form-control datepicker" id="fname" placeholder="Enter Your Father's Name" required>
+            <input type="text" name="fname" class="form-control datepicker"  placeholder="Enter Your Father's Name" >
           </div>
           <div class="col-md-4 form-group mt-3">
-            <input type="text" name="mname" class="form-control datepicker" id="mname" placeholder="Enter Your Mother's Name" required>
+            <input type="text" name="mname" class="form-control datepicker"  placeholder="Enter Your Mother's Name" >
           </div>
 
           <div class="col-md-4 form-group mt-3">
-            <select name="ssc_board" id="ssc_board" class="form-select">
+            <select name="ssc_board" class="form-select">
               <option value="">Select SSC Board</option>
               @foreach ($Boards as $board)
               <option value="{{$board->board_name}}">{{$board->board_name}}</option>
@@ -47,15 +58,15 @@
         </div>
         <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="text" name="ssc_roll" class="form-control datepicker" id="ssc_roll" placeholder="SSC Roll" required>
+              <input type="text" name="ssc_roll" class="form-control datepicker"  placeholder="SSC Roll" >
             </div>
 
             <div class="col-md-4 form-group mt-3">
-                <input type="text" name="ssc_reg" class="form-control datepicker" id="ssc_reg" placeholder="SSC Registration Number" required>
+                <input type="text" name="ssc_reg" class="form-control datepicker"  placeholder="SSC Registration Number" >
               </div>
 
             <div class="col-md-4 form-group mt-3">
-                <select name="ssc_year" id="ssc_year" class="form-select">
+                <select name="ssc_year"  class="form-select">
                     <option value="">Select SSC passing Year</option>
                     @foreach ($years as $year)
                     <option value="{{$year->year_name}}">{{$year->year_name}}</option>
@@ -66,7 +77,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 form-group mt-3">
-                <select name="ssc_year" id="ssc_year" class="form-select">
+                <select name="ssc_group"  class="form-select">
                   <option value="">Select SSC Group</option>
                   @foreach ($groups as $group)
                   <option value="{{$group->group_name}}">{{$group->group_name}}</option>
@@ -75,11 +86,11 @@
               </div>
 
             <div class="col-md-4 form-group mt-3">
-                <input type="text" name="ssc_gpa" class="form-control datepicker" id="ssc_gpa" placeholder="Enter Your GPA" required>
+                <input type="text" name="ssc_gpa" class="form-control datepicker" placeholder="Enter Your GPA" >
             </div>
 
             <div class="col-md-4 form-group mt-3">
-              <select name="ssc_year" id="ssc_year" class="form-select">
+              <select name="hsc_board"  class="form-select">
                 <option value="">Select HSC Board</option>
                 @foreach ($Boards as $board)
                 <option value="{{$board->board_name}}">{{$board->board_name}}</option>
@@ -90,15 +101,15 @@
 
         <div class="row">
             <div class="col-md-4 form-group mt-3">
-                <input type="text" name="hsc_roll" class="form-control datepicker" id="hsc_roll" placeholder="Enter Your HSC Roll" required>
+                <input type="text" name="hsc_roll" class="form-control datepicker"  placeholder="Enter Your HSC Roll" >
             </div>
 
             <div class="col-md-4 form-group mt-3">
-                <input type="text" name="hsc_reg" class="form-control datepicker" id="hsc_reg" placeholder="Enter Your HSC Registration Number" required>
+                <input type="text" name="hsc_reg" class="form-control datepicker"  placeholder="Enter Your HSC Registration Number" >
             </div>
 
             <div class="col-md-4 form-group mt-3">
-                <select name="hsc_year" id="hsc_year" class="form-select">
+                <select name="hsc_year"  class="form-select">
                   <option value="">Select HSC Passing Year</option>
                     @foreach ($years as $year)
                         <option value="{{$year->year_name}}">{{$year->year_name}}</option>
@@ -111,7 +122,7 @@
 
         <div class="row">
             <div class="col-md-3 form-group mt-3">
-                <select name="ssc_year" id="ssc_year" class="form-select">
+                <select name="hsc_group"  class="form-select">
                   <option value="">Select HSC Group</option>
                   @foreach ($groups as $group)
                   <option value="{{$group->group_name}}">{{$group->group_name}}</option>
@@ -120,21 +131,22 @@
               </div>
 
             <div class="col-md-3 form-group mt-3">
-                <input type="text" name="hsc_gpa" class="form-control datepicker" id="hsc_gpa" placeholder="Enter Your HSC GPA" required>
+                <input type="text" name="hsc_gpa" class="form-control datepicker"  placeholder="Enter Your HSC GPA" >
             </div>
             <div class="col-md-3 form-group mt-3">
-                <select name="ssc_year" id="ssc_year" class="form-select">
+                <select name="unit" id="kunit" class="form-select">
                   <option value="">Select Unit</option>
-
+                  @foreach ($units as $unit)
+                  <option value="{{$unit->unit_name}}">{{$unit->unit_name}}</option>
+                  @endforeach
                 </select>
               </div>
             <div class="col-md-3 form-group mt-3">
-                <input type="file" name="img" class="form-control datepicker" id="img" placeholder="Upload Your Photo" required>
+                <input type="file" name="img" class="form-control"  placeholder="Upload Your Photo" >
             </div>
 
 
         </div>
-
 
 
         <div class="my-3">

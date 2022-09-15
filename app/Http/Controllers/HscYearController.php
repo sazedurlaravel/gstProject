@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HscYear;
 
 class HscYearController extends Controller
-{/**
+{   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

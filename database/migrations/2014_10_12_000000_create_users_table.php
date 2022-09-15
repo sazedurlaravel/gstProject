@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('hsc_group');
             $table->string('hsc_reg');
             $table->string('hsc_gpa');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->string('role');
             $table->tinyInteger('status')->default(0)->comment('0=unpaid,1=paid');
             $table->timestamp('email_verified_at')->nullable();

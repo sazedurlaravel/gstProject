@@ -71,23 +71,50 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                <a href={{route('unit.index')}} class="nav-link  {{($route=='unit.index')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
+                  <p>View Units</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview {{($prefix=="/application") ? "menu-open":"" }}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+               Manage Applicants
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href={{route('application.index')}} class="nav-link {{($route=='application.index')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Applicants</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                <a href={{route('year.index')}} class="nav-link  {{($route=='year.index')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
+                  <p>View Applicants</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                <a href={{route('group.index')}} class="nav-link  {{($route=='group.index')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
+                  <p>View Groups</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href={{route('unit.index')}} class="nav-link  {{($route=='unit.index')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Units</p>
+                </a>
+              </li>
+
             </ul>
           </li>
 

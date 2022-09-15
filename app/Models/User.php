@@ -21,6 +21,26 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'fname',
+        'mname',
+        'unit',
+        'payable_amount',
+        'ssc_roll',
+        'ssc_reg',
+        'ssc_board',
+        'ssc_year',
+        'ssc_gpa',
+        'ssc_group',
+        'hsc_roll',
+        'hsc_reg',
+        'hsc_board',
+        'hsc_year',
+        'hsc_gpa',
+        'hsc_group',
+        'img',
+        'status',
+        'role'
     ];
 
     /**
