@@ -40,12 +40,14 @@ class UnitController extends Controller
     {
         //dd($request);
         $this->validate($request,[
-            'unit_name' => 'required|unique:units,unit_name'
+            'unit_name' => 'required|unique:units,unit_name',
+            'amount' => 'required'
 
         ]);
 
     	 $Unit=new Unit();
     	 $Unit->unit_name=$request->unit_name;
+         $Unit->amount=$request->amount;
     	 $Unit->save();
          return redirect()->route('unit.index')->with('success','unit Added!');
     }
@@ -87,6 +89,7 @@ class UnitController extends Controller
 
     	 $Unit=Unit::find($id);
     	 $Unit->unit_name=$request->unit_name;
+         $Unit->amount=$request->amount;
     	 $Unit->save();
          return redirect()->route('unit.index')->with('success','unit Updated!');
     }

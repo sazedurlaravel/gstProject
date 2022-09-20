@@ -6,6 +6,9 @@ use App\Http\Controllers\HscYearController;
 use App\Http\Controllers\HscGroupController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 
 /*
@@ -18,10 +21,17 @@ use App\Http\Controllers\UnitController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/admin', function () {
-    return view('Backend.layout.master');
+Route::group(['as'=>'admin.','prefix' => 'admin','middleware'=>['auth','admin']], function () {
+    Route::get('/', [DashboardController::class,'index'])->name('dashboard');
 });
+
+Route::group(['as'=>'applicant.','prefix' => 'applicant','middleware'=>['auth','user']], function () {
+    Route::get('/', [App\Http\Controllers\User\DashboardController::class,'index'])->name('dashboard');
+});
+
+// Route::get('/admin', function () {
+//     return view('Backend.layout.master');
+// });
 Route::get('/', function () {
     return view('frontend.pages.index');
 });
@@ -67,6 +77,18 @@ Route::prefix('setup')->group(function(){
 //units routes
 Route::prefix('application')->group(function(){
     Route::get('/view',[ApplicantController::class,'index'])->name('application.index');
+    Route::get('/show/{id}',[ApplicantController::class,'show'])->name('application.show');
+    Route::get('/delete/{id}',[ApplicantController::class,'destroy'])->name('application.delete');
     Route::post('/store',[ApplicantController::class,'store'])->name('application.store');
 });
 
+//payments routes
+Route::prefix('application')->group(function(){
+    Route::get('/payment-view',[PaymentController::class,'index'])->name('payment.index');
+
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

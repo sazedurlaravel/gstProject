@@ -54,7 +54,7 @@ class ApplicantController extends Controller
             'phone'=>'required',
             'fname'=>'required',
             'mname'=>'required',
-            'unit'=>'required',
+            'unit_id'=>'required',
             'ssc_roll'=>'required',
             'ssc_reg'=>'required',
             'ssc_board'=>'required',
@@ -71,12 +71,13 @@ class ApplicantController extends Controller
 
         ]);
         $applicant = new User();
+        $applicant->id="2022".mt_rand(10000,99999);
         $applicant->name=$request->name;
         $applicant->email=$request->email;
         $applicant->phone=$request->phone;
         $applicant->fname=$request->fname;
         $applicant->mname=$request->mname;
-        $applicant->unit=$request->unit;
+        $applicant->unit_id=$request->unit_id;
         $applicant->ssc_roll=$request->ssc_roll;
         $applicant->ssc_reg=$request->ssc_reg;
         $applicant->ssc_board=$request->ssc_board;
@@ -111,7 +112,8 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['showData']=User::find($id);
+        return view('Backend.pages.applicants.applicant-details',$data);
     }
 
     /**
@@ -145,6 +147,11 @@ class ApplicantController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $applicant=User::find($id);
+        $applicant->delete();
+
+        return back()->with('success','Applicant Deleted!');
+
     }
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Unit extends Model
 {
     use HasFactory;
+    protected $fillable=['unit_name','amount'];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
