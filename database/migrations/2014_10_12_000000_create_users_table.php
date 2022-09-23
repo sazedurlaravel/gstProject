@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('hsc_reg')->nullable();
             $table->string('hsc_gpa')->nullable();
             $table->string('img')->nullable();
+            $table->double('payable_amount')->nullable();
             $table->string('role');
             $table->tinyInteger('status')->default(0)->comment('0=unpaid,1=paid');
             $table->timestamp('email_verified_at')->nullable();

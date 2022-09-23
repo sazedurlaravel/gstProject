@@ -27,6 +27,10 @@
                                 <td>{{$showData->name}}</td>
                             </tr>
                             <tr>
+                                <th>Email</th>
+                                <td>{{$showData->email}}</td>
+                            </tr>
+                            <tr>
                                 <th>Unit</th>
                                 <td>{{$showData->unit}}</td>
                             </tr>

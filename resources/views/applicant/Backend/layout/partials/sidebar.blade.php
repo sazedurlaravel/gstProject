@@ -6,16 +6,18 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light">{{ auth()->user()->name }}'s Dashboard</span>
     </a>
-
+    @php
+        $user=auth()->user();
+    @endphp
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src={{asset("backend/dist/img/user2-160x160.jpg")}} class="img-circle elevation-2" alt="User Image">
+          <img src={{ url('public/Images/'.$user->img) }} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">{{ auth()->user()->name }} </a>
         </div>
       </div>
 
@@ -42,6 +44,7 @@
                 $route = Route::current()->getName();
           @endphp
 
+        @if ( auth()->user()->role=="Admin")
           <li class="nav-item has-treeview {{($prefix=="/setup") ? "menu-open":"" }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
@@ -117,7 +120,7 @@
 
             </ul>
           </li>
-
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -1,4 +1,4 @@
-@extends('Backend.layout.master')
+@extends('applicant.Backend.layout.master')
 
 @section('content')
 
@@ -7,11 +7,14 @@
         <div class="card-header bg-primary">
             <h3>Applicant Details</h3>
         </div>
+        @php
+           $user= auth()->user();
+        @endphp
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <img src="{{ url('public/Images/'.$showData->img) }}" alt="" srcset="" width="200" height="200">
+                    <img src="{{ url('public/Images/'.$user->img) }}" alt="" srcset="" width="200" height="200">
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -24,70 +27,70 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <td>{{$showData->name}}</td>
+                                <td>{{$user->name}}</td>
                             </tr>
                             <tr>
                                 <th>Unit</th>
-                                <td>{{$showData->unit}}</td>
+                                <td>{{$user->unit}}</td>
                             </tr>
                             <tr>
                                 <th>Phone Number</th>
-                                <td>{{$showData->phone}}</td>
+                                <td>{{$user->phone}}</td>
                             </tr>
 
                             <tr>
                                 <th>SSC Board</th>
-                                <td>{{$showData->ssc_board}}</td>
+                                <td>{{$user->ssc_board}}</td>
                             </tr>
                             <tr>
                                 <th>SSC Passing Year</th>
-                                <td>{{$showData->ssc_year}}</td>
+                                <td>{{$user->ssc_year}}</td>
                             </tr>
                             <tr>
                                 <th>SSC Group</th>
-                                <td>{{$showData->ssc_group}}</td>
+                                <td>{{$user->ssc_group}}</td>
                             </tr>
                             <tr>
                                 <th>SSC Roll</th>
-                                <td>{{$showData->ssc_roll}}</td>
+                                <td>{{$user->ssc_roll}}</td>
                             </tr>
                             <tr>
                                 <th>SSC Registration Number</th>
-                                <td>{{$showData->ssc_reg}}</td>
+                                <td>{{$user->ssc_reg}}</td>
                             </tr>
                             <tr>
                                 <th>SSC GPA</th>
-                                <td><span class="badge badge-success">{{$showData->ssc_gpa}}</span></td>
+                                <td><span class="badge badge-success">{{$user->ssc_gpa}}</span></td>
                             </tr>
                             <tr>
                                 <th>Hsc Board</th>
-                                <td>{{$showData->hsc_board}}</td>
+                                <td>{{$user->hsc_board}}</td>
                             </tr>
                             <tr>
                                 <th>Hsc Passing Year</th>
-                                <td>{{$showData->hsc_year}}</td>
+                                <td>{{$user->hsc_year}}</td>
                             </tr>
                             <tr>
                                 <th>Hsc Group</th>
-                                <td>{{$showData->hsc_group}}</td>
+                                <td>{{$user->hsc_group}}</td>
                             </tr>
                             <tr>
                                 <th>Hsc Roll</th>
-                                <td>{{$showData->hsc_roll}}</td>
+                                <td>{{$user->hsc_roll}}</td>
                             </tr>
                             <tr>
                                 <th>Hsc Registration Number</th>
-                                <td>{{$showData->hsc_reg}}</td>
+                                <td>{{$user->hsc_reg}}</td>
                             </tr>
                             <tr>
                                 <th>HSC GPA</th>
-                                <td><span class="badge badge-success">{{$showData->hsc_gpa}}</span></td>
+                                <td><span class="badge badge-success">{{$user->hsc_gpa}}</span></td>
                             </tr>
 
                             <tr>
                                 <th>PAYMENT STATUS</th>
-                                <td><span class="badge badge-{{$showData->status==0? "warning":"success"}}">
-                                    @if ($showData->status==0)
+                                <td><span class="badge badge-{{$user->status==0? "warning":"success"}}">
+                                    @if ($user->status==0)
                                        UNPAID
                                     @else
                                         PAID

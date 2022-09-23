@@ -91,7 +91,7 @@ class ApplicantController extends Controller
         $applicant->hsc_gpa=$request->hsc_gpa;
         $applicant->hsc_group=$request->hsc_group;
         $applicant->role="Applicant";
-        $applicant->password="123456";
+        $applicant->password= bcrypt('applicant');
         if($request->file('img')){
             $file= $request->file('img');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -100,7 +100,7 @@ class ApplicantController extends Controller
         }
         $applicant->save();
 
-        return back()->with('success',"Application Submited Successfully!");
+        return redirect()->route('applicant.dashboard')->with('success',"Application Submited Successfully!");
 
     }
 
