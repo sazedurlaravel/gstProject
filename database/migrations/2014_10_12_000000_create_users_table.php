@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('email');
             $table->string('fname')->nullable();
             $table->string('mname')->nullable();
-            $table->integer('unit_id')->nullable();
+            $table->string('center')->nullable();
+            $table->string('exam_roll')->nullable();
+            $table->string('date_time')->nullable();
+            $table->string('unit_name')->nullable();
             $table->double('payable_amount')->nullable();
             $table->string('phone')->nullable();
             $table->string('ssc_roll')->nullable();
@@ -35,7 +38,6 @@ return new class extends Migration
             $table->string('hsc_reg')->nullable();
             $table->string('hsc_gpa')->nullable();
             $table->string('img')->nullable();
-            $table->double('payable_amount')->nullable();
             $table->string('role');
             $table->tinyInteger('status')->default(0)->comment('0=unpaid,1=paid');
             $table->timestamp('email_verified_at')->nullable();

@@ -76,6 +76,12 @@
                   <p>View Units</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href={{route('score.index')}} class="nav-link  {{($route=='score.index')?"active":""}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Scores</p>
+                </a>
+              </li>
 
             </ul>
           </li>
@@ -116,6 +122,17 @@
               </li>
 
             </ul>
+          </li>
+          <li class="nav-item has-treeview {{($prefix=="/application") ? "menu-open":"" }}">
+            <a href="{{route('admin.signout')}}" class="nav-link">
+
+              <p>
+               logout
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+
           </li>
 
         </ul>

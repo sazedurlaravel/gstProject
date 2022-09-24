@@ -44,83 +44,35 @@
                 $route = Route::current()->getName();
           @endphp
 
-        @if ( auth()->user()->role=="Admin")
-          <li class="nav-item has-treeview {{($prefix=="/setup") ? "menu-open":"" }}">
+
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
-               Manage Setups
+               Applicant Details
                 <i class="fas fa-angle-left right"></i>
 
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href={{route('board.index')}} class="nav-link {{($route=='board.index')?"active":""}}">
+                <a href={{route('applicant.result')}} class="nav-link {{($route=='applicant.result')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Boards</p>
+                  <p>Check Result</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href={{route('year.index')}} class="nav-link  {{($route=='year.index')?"active":""}}">
+                <a href={{route('applicant.signout')}} class="nav-link {{($route=='applicant.signout')?"active":""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Year</p>
+                  <p>LogOut</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href={{route('group.index')}} class="nav-link  {{($route=='group.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Groups</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href={{route('unit.index')}} class="nav-link  {{($route=='unit.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Units</p>
-                </a>
-              </li>
+
 
             </ul>
           </li>
 
-          <li class="nav-item has-treeview {{($prefix=="/application") ? "menu-open":"" }}">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-               Manage Applicants
-                <i class="fas fa-angle-left right"></i>
 
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href={{route('application.index')}} class="nav-link {{($route=='application.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Applicants</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href={{route('payment.index')}} class="nav-link  {{($route=='payment.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Payments</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href={{route('group.index')}} class="nav-link  {{($route=='group.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Groups</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href={{route('unit.index')}} class="nav-link  {{($route=='unit.index')?"active":""}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Units</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

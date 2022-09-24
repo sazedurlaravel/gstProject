@@ -26,12 +26,17 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Sdudent ID</th>
+                                <td>{{$user->id}}</td>
+                            </tr>
+                            <tr>
                                 <th>Name</th>
                                 <td>{{$user->name}}</td>
                             </tr>
+
                             <tr>
                                 <th>Unit</th>
-                                <td>{{$user->unit}}</td>
+                                <td>{{$user->unit_name}}</td>
                             </tr>
                             <tr>
                                 <th>Phone Number</th>
@@ -106,7 +111,13 @@
 
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                   <a class="btn btn-success" href="#">Download Admit Card</a>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
 
         </div>
 

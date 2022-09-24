@@ -8,6 +8,8 @@ use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\ScoreController;
 
 
 
@@ -27,6 +29,8 @@ Route::group(['as'=>'admin.','prefix' => 'admin','middleware'=>['auth','admin']]
 
 Route::group(['as'=>'applicant.','prefix' => 'applicant','middleware'=>['auth','user']], function () {
     Route::get('/', [App\Http\Controllers\User\DashboardController::class,'index'])->name('dashboard');
+    //Applicant Result route
+Route::get('/result', [ApplicantController::class, 'result'])->name('result');
 });
 
 // Route::get('/admin', function () {
@@ -53,6 +57,15 @@ Route::prefix('setup')->group(function(){
     Route::post('/update-year/{id}',[HscYearController::class,'update'])->name('year.update');
     Route::post('/store-year',[HscYearController::class,'store'])->name('year.store');
     Route::get('/delete-year/{id}',[HscYearController::class,'destroy'])->name('year.delete');
+});
+//scores routes
+Route::prefix('setup')->group(function(){
+    Route::get('/view-score',[ScoreController::class,'index'])->name('score.index');
+    Route::get('/add-score',[ScoreController::class,'create'])->name('score.add');
+    Route::get('/edit-score/{id}',[ScoreController::class,'edit'])->name('score.edit');
+    Route::post('/update-score/{id}',[ScoreController::class,'update'])->name('score.update');
+    Route::post('/store-score',[ScoreController::class,'store'])->name('score.store');
+    Route::get('/delete-score/{id}',[ScoreController::class,'destroy'])->name('score.delete');
 });
 //years routes
 Route::prefix('setup')->group(function(){
@@ -87,6 +100,14 @@ Route::prefix('application')->group(function(){
     Route::get('/payment-view',[PaymentController::class,'index'])->name('payment.index');
 
 });
+
+
+
+Route::get('applicant/login-form', [CustomLoginController::class, 'index'])->name('applicant.login');
+Route::post('applicant/login', [CustomLoginController::class, 'customLogin'])->name('login.custom');
+Route::get('applicant/signout', [CustomLoginController::class, 'signOut'])->name('applicant.signout')
+;
+Route::get('admin/signout', [CustomLoginController::class, 'AdminsignOut'])->name('admin.signout');
 
 
 Auth::routes();

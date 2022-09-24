@@ -8,6 +8,8 @@ use App\Models\HscYear;
 use App\Models\HscGroup;
 use App\Models\Unit;
 use App\Models\User;
+use Auth;
+use App\Models\Result;
 class ApplicantController extends Controller
 {
     /**
@@ -54,7 +56,7 @@ class ApplicantController extends Controller
             'phone'=>'required',
             'fname'=>'required',
             'mname'=>'required',
-            'unit_id'=>'required',
+            'unit_name'=>'required',
             'ssc_roll'=>'required',
             'ssc_reg'=>'required',
             'ssc_board'=>'required',
@@ -77,7 +79,11 @@ class ApplicantController extends Controller
         $applicant->phone=$request->phone;
         $applicant->fname=$request->fname;
         $applicant->mname=$request->mname;
-        $applicant->unit_id=$request->unit_id;
+        $applicant->center=$request->center;
+        $applicant->exam_roll=mt_rand(10000,99999);
+        $applicant->payable_amount=1400;
+        $applicant->date_time=$request->date_time;
+        $applicant->unit_name=$request->unit_name;
         $applicant->ssc_roll=$request->ssc_roll;
         $applicant->ssc_reg=$request->ssc_reg;
         $applicant->ssc_board=$request->ssc_board;
@@ -90,6 +96,7 @@ class ApplicantController extends Controller
         $applicant->hsc_year=$request->hsc_year;
         $applicant->hsc_gpa=$request->hsc_gpa;
         $applicant->hsc_group=$request->hsc_group;
+        $applicant->status=1;
         $applicant->role="Applicant";
         $applicant->password= bcrypt('applicant');
         if($request->file('img')){
@@ -99,6 +106,8 @@ class ApplicantController extends Controller
             $applicant['img']= $filename;
         }
         $applicant->save();
+        $user = User::find($applicant->id);
+        Auth::login($user);
 
         return redirect()->route('applicant.dashboard')->with('success',"Application Submited Successfully!");
 
@@ -152,6 +161,13 @@ class ApplicantController extends Controller
         $applicant->delete();
 
         return back()->with('success','Applicant Deleted!');
+
+    }
+
+    public function result(){
+        $user_id = Auth::user()->id;
+        $data["showData"] = Result::where("user_id",$user_id)->get();
+        return view('applicant.Backend.pages.applicants.applicant-result',$data);
 
     }
 }

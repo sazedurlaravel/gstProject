@@ -23,6 +23,10 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Student ID</th>
+                                <td>{{$showData->id}}</td>
+                            </tr>
+                             <tr>
                                 <th>Name</th>
                                 <td>{{$showData->name}}</td>
                             </tr>

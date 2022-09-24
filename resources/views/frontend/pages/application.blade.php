@@ -134,11 +134,12 @@
                 <input type="text" name="hsc_gpa" class="form-control datepicker"  placeholder="Enter Your HSC GPA" >
             </div>
             <div class="col-md-3 form-group mt-3">
-                <select name="unit_id"  class="form-select">
+                <select name="unit_name"  class="form-select">
                   <option value="">Select Unit</option>
-                  @foreach ($units as $unit)
-                  <option value="{{$unit->id}}">{{$unit->unit_name}}</option>
-                  @endforeach
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
                 </select>
               </div>
             <div class="col-md-3 form-group mt-3">

@@ -2,7 +2,7 @@
 <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
       <div class="align-items-center d-none d-md-flex">
-        <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
+        <i class="bi bi-clock"></i> Admission Going On - 23/09/2022, 8AM to 23/10/2022, 10PM
       </div>
       <div class="d-flex align-items-center">
         <i class="bi bi-phone"></i> Call us now +1 5589 55488 55
@@ -14,7 +14,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html" class="logo me-auto"><img src="frontend/assets/img/logo.png" alt=""></a>
+      <a href="index.html" class="logo me-auto">GST Admission</a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
