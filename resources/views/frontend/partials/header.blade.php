@@ -5,7 +5,7 @@
         <i class="bi bi-clock"></i> Admission Going On - 23/09/2022, 8AM to 23/10/2022, 10PM
       </div>
       <div class="d-flex align-items-center">
-        <i class="bi bi-phone"></i> Call us now +1 5589 55488 55
+        <i class="bi bi-phone"></i> Call us now +8801571204557
       </div>
     </div>
   </div>
@@ -31,12 +31,11 @@
 
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Help &</span> Support</a>
+
 
     </div>
   </header><!-- End Header -->

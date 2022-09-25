@@ -31,7 +31,13 @@
                 <td>{{$data->name}}</td>
                 <td>{{$data->unit_id}}</td>
                 <td>{{$data->phone}}</td>
-                <td>{{$data->status}}</td>
+                <td>
+                    @if ($data->status==0)
+                    <span class="badge badge-danger">Unpaid</span>
+                @else
+                <span class="badge badge-success">Paid</span>
+                @endif
+                </td>
                 <td>
                     <a class="btn btn-sm btn-success"  href={{route('application.show',$data->id)}}><i class="fa fa-eye"></i></a>
 

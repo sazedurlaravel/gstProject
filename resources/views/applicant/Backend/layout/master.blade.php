@@ -26,8 +26,10 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        @include('applicant.Backend.layout.partials.message')
         <!-- Small boxes (Stat box) -->
         <div class="row">
+
           @yield('content')
           <!-- ./col -->
         </div>

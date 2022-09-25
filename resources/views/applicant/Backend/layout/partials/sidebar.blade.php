@@ -44,7 +44,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href={{route('applicant.admitcard')}} class="nav-link {{($route=='applicant.admitcard')?"active":""}}">
+                    <a href={{route('applicant.admitcard')}} target="_blank" class="nav-link {{($route=='applicant.admitcard')?"active":""}}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Download Admit Card</p>
                     </a>
