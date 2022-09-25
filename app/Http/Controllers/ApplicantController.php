@@ -10,6 +10,8 @@ use App\Models\Unit;
 use App\Models\User;
 use Auth;
 use App\Models\Result;
+use App\Models\University;
+use Str;
 class ApplicantController extends Controller
 {
     /**
@@ -34,6 +36,7 @@ class ApplicantController extends Controller
         $data['years']=HscYear::all();
         $data['groups']=HscGroup::all();
         $data['units']=Unit::all();
+        $data['universities']=University::all();
         return view('frontend.pages.application',$data);
     }
 
@@ -56,6 +59,7 @@ class ApplicantController extends Controller
             'phone'=>'required',
             'fname'=>'required',
             'mname'=>'required',
+            'center'=>'required',
             'unit_name'=>'required',
             'ssc_roll'=>'required',
             'ssc_reg'=>'required',
@@ -82,7 +86,7 @@ class ApplicantController extends Controller
         $applicant->center=$request->center;
         $applicant->exam_roll=mt_rand(10000,99999);
         $applicant->payable_amount=1400;
-        $applicant->date_time=$request->date_time;
+        $applicant->date_time="02 November, 2022";
         $applicant->unit_name=$request->unit_name;
         $applicant->ssc_roll=$request->ssc_roll;
         $applicant->ssc_reg=$request->ssc_reg;
@@ -166,11 +170,20 @@ class ApplicantController extends Controller
 
     public function result(){
         $user_id = Auth::user()->id;
-        $data['showData'] = Result::query()
+        $showData = Result::query()
                             ->where('user_id',$user_id)
                             ->get();
 
-        return view('applicant.Backend.pages.applicants.applicant-result',$data);
+            if (count($showData)>0) {
+                return view('applicant.Backend.pages.applicants.applicant-result',compact('showData'));
+            } else {
+              return back()->with('error','Sorry Result Not Published Yet!');
+            }
+
+
+
+
+
 
     }
     public function details(){

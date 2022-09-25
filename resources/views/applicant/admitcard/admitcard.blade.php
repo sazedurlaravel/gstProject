@@ -76,7 +76,7 @@
 			<div class="BoxC border- padding mar-bot">
 				<div class="row">
 					<div class="col-sm-6">
-						<h5>Exam Roll : 9910101</h5>
+						<h5>Exam Roll : {{$user->exam_roll}}</h5>
 					</div>
 				</div>
 			</div>
@@ -86,7 +86,7 @@
 						<table class="table table-bordered">
 						  <tbody>
 							<tr>
-							  <td><b>Exam Roll : 9910101</b></td>
+							  <td><b>Exam Roll : {{$user->exam_roll}}</b></td>
 							  <td><b>Student ID:</b>{{$user->id}}</td>
 							</tr>
 							<tr>
@@ -95,7 +95,7 @@
 							</tr>
 							<tr>
 							  <td><b>Father's Name: </b>{{$user->fname}}</td>
-							  <td><b>Exam Date & Time: </b>02 Jul 2023</td>
+							  <td><b>Exam Date & Time: </b>{{$user->date_time}}</td>
 							</tr>
 							<tr>
 							  <td colspan="2" style="    height: 125px;"><b>Exam Center: </b>{{$user->center}}</td>

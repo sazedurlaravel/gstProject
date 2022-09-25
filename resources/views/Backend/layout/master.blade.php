@@ -27,6 +27,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+        @include('applicant.Backend.layout.partials.message');
           @yield('content')
           <!-- ./col -->
         </div>

@@ -121,7 +121,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3 form-group mt-3">
+            <div class="col-md-4 form-group mt-3">
                 <select name="hsc_group"  class="form-select">
                   <option value="">Select HSC Group</option>
                   @foreach ($groups as $group)
@@ -130,10 +130,10 @@
                 </select>
               </div>
 
-            <div class="col-md-3 form-group mt-3">
+            <div class="col-md-4 form-group mt-3">
                 <input type="text" name="hsc_gpa" class="form-control datepicker"  placeholder="Enter Your HSC GPA" >
             </div>
-            <div class="col-md-3 form-group mt-3">
+            <div class="col-md-4 form-group mt-3">
                 <select name="unit_name"  class="form-select">
                   <option value="">Select Unit</option>
                     <option value="A">A</option>
@@ -142,10 +142,24 @@
                     <option value="D">D</option>
                 </select>
               </div>
-            <div class="col-md-3 form-group mt-3">
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group mt-3">
+                <select name="center"  class="form-select">
+                  <option value="">Select Center</option>
+                  @foreach ($universities as $university)
+                  <option value="{{$university->name}}">{{$university->name}}</option>
+                  @endforeach
+
+
+                </select>
+              </div>
+              <div class="col-md-6 form-group mt-3">
                 <input type="file" name="img" class="form-control"  placeholder="Upload Your Photo" >
             </div>
-
 
         </div>
 
