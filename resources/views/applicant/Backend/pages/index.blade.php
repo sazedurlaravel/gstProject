@@ -6,12 +6,12 @@
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
-          <h3>A</h3>
+          <h3>{{Auth::user()->id}}</h3>
 
-          <p>Aplied Unit</p>
+          <p>STUDENT ID</p>
         </div>
         <div class="icon">
-          <i class="ion ion-bag"></i>
+          <i class="ion ion-card"></i>
         </div>
         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
@@ -21,9 +21,9 @@
       <!-- small box -->
       <div class="small-box bg-success">
         <div class="inner">
-          <h3>1500 TK</h3>
+          <h3>{{Auth::user()->unit_name}}</h3>
 
-          <p>Payable Amount</p>
+          <p>Applied Unit</p>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
@@ -34,11 +34,11 @@
     <!-- ./col -->
     <div class="col-lg-3 col-6">
       <!-- small box -->
-      <div class="small-box bg-warning">
+      <div class="small-box bg-info">
         <div class="inner">
-          <h3>44</h3>
+          <h3>Paid</h3>
 
-          <p>Admitable Universities</p>
+          <p>Pyment Status</p>
         </div>
         <div class="icon">
           <i class="ion ion-person-add"></i>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- ./col -->
-    <div class="col-lg-3 col-6">
+    {{-- <div class="col-lg-3 col-6">
       <!-- small box -->
       <div class="small-box bg-danger">
         <div class="inner">
@@ -60,7 +60,7 @@
         </div>
         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
-    </div>
+    </div> --}}
 
 
 @endsection

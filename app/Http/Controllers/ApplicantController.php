@@ -166,8 +166,19 @@ class ApplicantController extends Controller
 
     public function result(){
         $user_id = Auth::user()->id;
-        $data["showData"] = Result::where("user_id",$user_id)->get();
+        $data['showData'] = Result::query()
+                            ->where('user_id',$user_id)
+                            ->get();
+
         return view('applicant.Backend.pages.applicants.applicant-result',$data);
+
+    }
+    public function details(){
+        return view('applicant.Backend.pages.applicants.applicant-details');
+
+    }
+    public function admit(){
+        return view('applicant.admitcard.admitcard');
 
     }
 }

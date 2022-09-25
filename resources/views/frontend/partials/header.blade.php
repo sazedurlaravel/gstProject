@@ -20,14 +20,14 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Universities</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/')}}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{route('about')}}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{route('gst.list')}}">Universities</a></li>
           <li class="dropdown"><a href="#"><span>Admission</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{route('application')}}">Application</a></li>
-              <li><a href="#">Check Result</a></li>
-              <li><a href="#">Notice</a></li>
+              <li><a href="{{route('applicant.login')}}">Check Result</a></li>
+              <li><a href="{{route('notice')}}">Notice</a></li>
 
             </ul>
           </li>

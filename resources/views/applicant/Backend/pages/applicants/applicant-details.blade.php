@@ -111,13 +111,7 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                   <a class="btn btn-success" href="#">Download Admit Card</a>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
+
 
         </div>
 

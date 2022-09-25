@@ -66,7 +66,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Score::class);
     }
-    public function unit(){
-        return $this->hasOne('App\Models\Unit');
+    public function result(){
+        return $this->belongsTo('App\Models\Result','user_id');
     }
 }

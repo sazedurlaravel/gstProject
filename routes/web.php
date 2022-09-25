@@ -10,6 +10,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\UniversityController;
 
 
 
@@ -29,8 +32,10 @@ Route::group(['as'=>'admin.','prefix' => 'admin','middleware'=>['auth','admin']]
 
 Route::group(['as'=>'applicant.','prefix' => 'applicant','middleware'=>['auth','user']], function () {
     Route::get('/', [App\Http\Controllers\User\DashboardController::class,'index'])->name('dashboard');
+    Route::get('/details', [ApplicantController::class, 'details'])->name('details');
+    Route::get('/admit', [ApplicantController::class, 'admit'])->name('admitcard');
     //Applicant Result route
-Route::get('/result', [ApplicantController::class, 'result'])->name('result');
+    Route::get('/result', [ApplicantController::class, 'result'])->name('result');
 });
 
 // Route::get('/admin', function () {
@@ -67,7 +72,7 @@ Route::prefix('setup')->group(function(){
     Route::post('/store-score',[ScoreController::class,'store'])->name('score.store');
     Route::get('/delete-score/{id}',[ScoreController::class,'destroy'])->name('score.delete');
 });
-//years routes
+//groups routes
 Route::prefix('setup')->group(function(){
     Route::get('/view-group',[HscGroupController::class,'index'])->name('group.index');
     Route::get('/add-group',[HscGroupController::class,'create'])->name('group.add');
@@ -75,6 +80,30 @@ Route::prefix('setup')->group(function(){
     Route::post('/update-group/{id}',[HscGroupController::class,'update'])->name('group.update');
     Route::post('/store-group',[HscGroupController::class,'store'])->name('group.store');
     Route::get('/delete-group/{id}',[HscGroupController::class,'destroy'])->name('group.delete');
+});
+
+//notice routes
+Route::prefix('setup')->group(function(){
+    Route::get('/view-notice',[NoticeController::class,'index'])->name('notice.index');
+    Route::get('/add-notice',[NoticeController::class,'create'])->name('notice.add');
+    Route::get('/edit-notice/{id}',[NoticeController::class,'edit'])->name('notice.edit');
+    Route::post('/update-notice/{id}',[NoticeController::class,'update'])->name('notice.update');
+    Route::post('/store-notice',[NoticeController::class,'store'])->name('notice.store');
+    Route::get('/delete-notice/{id}',[NoticeController::class,'destroy'])->name('notice.delete');
+
+    Route::get('/notice',[NoticeController::class,'notice'])->name('notice');
+});
+
+//University routes
+Route::prefix('setup')->group(function(){
+    Route::get('/view-university',[UniversityController::class,'index'])->name('university.index');
+    Route::get('/add-university',[UniversityController::class,'create'])->name('university.add');
+    Route::get('/edit-university/{id}',[UniversityController::class,'edit'])->name('university.edit');
+    Route::post('/update-university/{id}',[UniversityController::class,'update'])->name('university.update');
+    Route::post('/store-university',[UniversityController::class,'store'])->name('university.store');
+    Route::get('/delete-university/{id}',[UniversityController::class,'destroy'])->name('university.delete');
+
+    Route::get('/university',[UniversityController::class,'university'])->name('university');
 });
 
 //units routes
@@ -103,11 +132,13 @@ Route::prefix('application')->group(function(){
 
 
 
-Route::get('applicant/login-form', [CustomLoginController::class, 'index'])->name('applicant.login');
-Route::post('applicant/login', [CustomLoginController::class, 'customLogin'])->name('login.custom');
+Route::get('applicant/login', [CustomLoginController::class, 'index'])->name('applicant.login');
+Route::post('applicant/customlogin', [CustomLoginController::class, 'customLogin'])->name('login.custom');
 Route::get('applicant/signout', [CustomLoginController::class, 'signOut'])->name('applicant.signout')
 ;
 Route::get('admin/signout', [CustomLoginController::class, 'AdminsignOut'])->name('admin.signout');
+Route::get('about', [WebsiteController::class, 'about'])->name('about');
+Route::get('gst-list', [WebsiteController::class, 'gstList'])->name('gst.list');
 
 
 Auth::routes();
